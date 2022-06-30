@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div
+        {
+            border: 2px solid blue;
+            text-align: center;
+            margin: 2px;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        function f_22()
+        {
+            document.getElementById('output_1').innerText = 
+                document.getElementById('input_1').value.replace(/\s/gm, '?');
+        }
+        function f_35()
+        {
+            document.getElementById('output_2').innerText = 
+                document.getElementById('input_2').value.replace(/\ba{3}\b/,'!');
+        }
+
+        function f_36()
+        {
+            document.getElementById('output_3').innerText = 
+                document.getElementById('input_3').value.replace(/k{3}$/,'?');
+        }
+
+        function f_39()
+        {
+            document.getElementById('output_4').innerText = 
+                document.getElementById('input_4').value.replace(/\bh\\\\\\h\b/gm,'!');
+        }
+
+        function f_40()
+        {
+            document.getElementById('output_5').innerText = 
+                document.getElementById('input_5').value.replace(/![\S]+\?/gm,'0');
+        }
+
+        function f_41()
+        {
+            document.getElementById('output_6').innerText = 
+                document.getElementById('input_6').value.replace(/\b([a-zA-z0-9]+)&([a-zA-z0-9]+)\b/gm, '$2&$1');
+        }
+
+        function f_42()
+        {
+            document.getElementById('output_7').innerText = 
+                document.getElementById('input_7').value.replace(/(\d)/gm, '$1$1');
+        }
+
+        function f_52()
+        {
+            document.getElementById('output_8').innerText = 
+                document.getElementById('input_8').value.match(/\d/gm).reduce((a, b) => Number(a) + Number(b));
+        }
+
+        function f_53()
+        {
+            document.getElementById('output_9').innerText = 
+            document.getElementById('input_9').value.replace(
+                /\b(http[s]?:\/\/([\w.-]+\.[\w.-]{2,3}))\b/gm, 
+                '<a href="$1">$2</a>');
+        }
+
+        function f_54()
+        {
+            document.getElementById('output_10').innerText = 
+                document.getElementById('input_10').value.replace(/\s{2,}/gm, ' ');
+        }
+
+        function f_55()
+        {
+            document.getElementById('output_11').innerText = 
+                document.getElementById('input_11').value.replace(/kkk(?=b)/gm, '?');
+        }
+
+        function f_56()
+        {
+            document.getElementById('output_12').innerText = 
+                document.getElementById('input_12').value.replace(/kkk(?!b)/gm, '?');
+        }
+        function f_60()
+        {
+            document.getElementById('output_13').innerText = 
+                document.getElementById('input_13').value.replace(/\W*\w*(\w)\1\1\w*\W*/gm, ' ');
+        }
+
+        function f_61()
+        {
+            document.getElementById('output_14').innerText = 
+                document.getElementById('input_14').value.replace(/\b(\w+)\s+\1/gm, '$1');
+        }
+
+        function f_62()
+        {
+            document.getElementById('output_15').innerText = 
+                document.getElementById('input_15').value.replace(/\b(\w+)\b(?:\s+\1\b)+/gm, '$1');
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <p>
+            22. Напишите регулярное выражение, которое заменит все пробелы на '?'.
+        </p>
+        <input type="text" id="input_1">
+        <button onclick="f_22()">Результат</button>
+        <output id="output_1"></output>
+    </div>
+
+    <div>
+        <p>
+            35. Дана строка 'aaa aaa aaa'. Напишите регулярное выражение, 
+            которое заменит первое 'aaa' на '!'.
+        </p>
+        <input type="text" id="input_2">
+        <button onclick="f_35()">Результат</button>
+        <output id="output_2"></output>
+    </div>
+
+    <div>
+        <p>
+            36. Дана строка 'kkk kkk kkk'. Напишите регулярное выражение, 
+            которое заменит последнее 'kkk' на '?'.
+        </p>
+        <input type="text" id="input_3">
+        <button onclick="f_36()">Результат</button>
+        <output id="output_3"></output>
+    </div>
+
+    <div>
+        <p>
+            39. Дана строка 'h\h h\\h h\\\h'. Напишите регулярное выражение, 
+            которое заменит строку 'h\\\h' на '!'.
+        </p>
+        <input type="text" id="input_4">
+        <button onclick="f_39()">Результат</button>
+        <output id="output_4"></output>
+    </div>
+
+    <div>
+        <p>
+            40. Дана строка 'kkk !hhh? bbb !ddd?'. Напишите регулярное выражение,
+            которое найдет содержимое всех конструкций !...? и заменит их на '0'.
+        </p>
+        <input type="text" id="input_5">
+        <button onclick="f_40()">Результат</button>
+        <output id="output_5"></output>
+    </div>
+
+    <div>
+        <p>
+            41. Дана строка 'ccc&ddd nnn9&sss'. Напишите регулярное выражение,
+            которое найдет строки по шаблону: любое количество букв и цифр, символ &,
+            любое количество букв и цифр и поменяет местами то, что стоит до & на то,
+            что стоит после нее. Например, ccc@ddd должно превратиться в ddd@ccc.
+        </p>
+        <input type="text" id="input_6">
+        <button onclick="f_41()">Результат</button>
+        <output id="output_6"></output>
+    </div>
+
+    <div>
+        <p>
+            42. Дана строка вида 'x1y2z3'. Напишите регулярное выражение, которое
+            найдет все цифры и удвоит их количество таким образом: 'x11y22z33' (то есть
+            рядом с каждой цифрой напишет такую же).
+        </p>
+        <input type="text" id="input_7">
+        <button onclick="f_42()">Результат</button>
+        <output id="output_7"></output>
+    </div>
+
+    <div>
+        <p>
+            52. Дана строка с буквами, пробелами и цифрами. Найдите сумму всех чисел
+            из данной строки.
+        </p>
+        <input type="text" id="input_8">
+        <button onclick="f_52()">Результат</button>
+        <output id="output_8"></output>
+    </div>
+
+    <div>
+        <p>
+            53. С помощью replace замените в строке домены вида http://kuku.ru,
+            http://kuku.com на &lta&gt href="http://kuku.ru">kuku.ru&lt/a&gt.
+
+        </p>
+        <input type="text" id="input_9">
+        <button onclick="f_53()">Результат</button>
+        <output id="output_9"></output>
+    </div>
+
+    <div>
+        <p>
+            54. С помощью replace замените все повторяющиеся пробелы на один.
+        </p>
+        <input type="text" id="input_10">
+        <button onclick="f_54()">Результат</button>
+        <output id="output_10"></output>
+    </div>
+
+    <div>
+        <p>
+            55. С помощью позитивного и негативного просмотра найдите все строки
+            по шаблону 3 буквы k, затем буква b и поменяйте 3 буквы k на знак '?'.
+            То есть из 'kkkb' нужно сделать '?b'.
+        </p>
+        <input type="text" id="input_11">
+        <button onclick="f_55()">Результат</button>
+        <output id="output_11"></output>
+    </div>
+
+    <div>
+        <p>
+            56. С помощью позитивного и негативного просмотра найдите все строки
+            по шаблону 3 буквы k, затем любая буква, но не b и поменяйте 3 буквы k
+            на знак '?'. То есть из, к примеру, 'kkkw' нужно сделать '?w', а 'kkkb' не
+            поменяется.
+        </p>
+        <input type="text" id="input_12">
+        <button onclick="f_56()">Результат</button>
+        <output id="output_12"></output>
+    </div>
+
+    <div>
+        <p>
+            60. Удалите регулярным выражением все слова из предложения,
+            содержащие три одинаковые следующие друг за другом буквы.
+        </p>
+        <input type="text" id="input_13">
+        <button onclick="f_60()">Результат</button>
+        <output id="output_13"></output>
+    </div>
+
+    <div>
+        <p>
+            61. Удалите регулярным выражением все повторяющиеся слова из строки,
+            например для 'abc kkk kkk lt' должно вернуть 'abc kkk lt'.
+        </p>
+        <input type="text" id="input_14">
+        <button onclick="f_61()">Результат</button>
+        <output id="output_14"></output>
+    </div>
+
+    <div>
+        <p>
+            62. Решите предыдущую задачу с учетом того, что слово может
+            повторяться много раз. Например 'abc kkk kkk kkk kkk kkk lt' должно
+            вернуть 'abc kkk lt' .
+        </p>
+        <input type="text" id="input_15">
+        <button onclick="f_62()">Результат</button>
+        <output id="output_15"></output>
+    </div>
+</body>
+</html>
